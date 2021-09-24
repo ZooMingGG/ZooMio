@@ -1,9 +1,10 @@
 import { AppLayout } from './layouts/AppLayout';
+import { AuthLayout } from './layouts/AuthLayout';
 
 const App = () => {
-  return (
-    <AppLayout />
-  );
+  const isAuthenticated = false;
+
+  return isAuthenticated ? <AppLayout /> : <AuthLayout />;
 }
 
 export { App };

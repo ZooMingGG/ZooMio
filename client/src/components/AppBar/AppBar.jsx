@@ -3,12 +3,13 @@ import MaterialAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import Box from '@mui/material/Box';
 
 import { Drawer } from '../Drawer';
 
 const AppBar = ({ setOpen }) => {
   return (
-    <div>
+    <Box>
       <MaterialAppBar position="static">
         <Toolbar>
           <IconButton
@@ -22,7 +23,7 @@ const AppBar = ({ setOpen }) => {
         </Toolbar>
       </MaterialAppBar>
       <Drawer>Hello</Drawer>
-    </div>
+    </Box>
   );
 }
 
