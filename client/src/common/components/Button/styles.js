@@ -2,6 +2,6 @@ import { makeStyles } from '@mui/styles';
 
 export const useStyles = makeStyles({
   button: {
-    height: 30,
+    height: 35,
   }
 });

@@ -4,7 +4,7 @@ import MaterialAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { colors } from '../../global-styles';
 import { Typography, Box, Link } from '@mui/material';
-import { Button } from '../../common/components/Button';
+import { Button } from '../../common/components';
 import { paths } from '../../auth/router';
 
 const AuthBar = () => {
@@ -17,10 +17,14 @@ const AuthBar = () => {
           </Link>
           <Box display="flex">
             <Box mr={2}>
-              <Button variant="contained">Login</Button>
+              <Link component={RouterLink} to={paths.signIn} color={colors.white} underline="none">
+                <Button variant="contained">Login</Button>
+              </Link>
             </Box>
             <Box>
-              <Button variant="contained">Register</Button>
+              <Link component={RouterLink} to={paths.signUp} color={colors.white} underline="none">
+                <Button variant="contained">Register</Button>
+              </Link>
             </Box>
           </Box>
         </Box>
