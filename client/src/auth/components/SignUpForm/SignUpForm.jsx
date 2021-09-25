@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { Box } from '@mui/material';
 import { TextField, Button } from '../../../common/components';
+import { PasswordStrengthVisualizer } from '../../common/components/PasswordStrengthVisualizer';
 
 const validationSchema = yup.object({
   firstName: yup
@@ -15,15 +18,15 @@ const validationSchema = yup.object({
     .required('Email is required'),
   password: yup
     .string('Enter your password')
-    .min(8, 'Password should be of minimum 8 characters length')
     .required('Password is required'),
   confirmPassword: yup
-    .string()
+    .string('Confirm password')
     .required('Confirm password is required')
     .oneOf([yup.ref('password'), null], 'Passwords must match')
 });
 
 const SignUpForm = () => {
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
   const submitHandler = (values) => {
     console.log(JSON.stringify(values, null, 2));
   };
@@ -79,13 +82,22 @@ const SignUpForm = () => {
         value={formik.values.password}
         handleChange={formik.handleChange}
         handleBlur={formik.handleBlur}
-        isError={formik.touched.password && Boolean(formik.errors.password)}
+        isError={
+          (formik.touched.password && Boolean(formik.errors.password)) ||
+          (formik.touched.password && !isPasswordValid)
+        }
         error={formik.errors.password}
         name="password"
         label="Password"
         placeholder="Enter your password..."
         type="password"
       />
+      {formik.values.password ?
+        <Box mb={2}>
+          <PasswordStrengthVisualizer value={formik.values.password} setIsPasswordValid={setIsPasswordValid} />
+        </Box>
+        : null
+      }
       <TextField
         value={formik.values.confirmPassword}
         handleChange={formik.handleChange}
@@ -98,7 +110,7 @@ const SignUpForm = () => {
         type="password"
       />
       <Button
-        disabled={!formik.isValid}
+        disabled={!formik.isValid || !isPasswordValid}
         isLoading={formik.isSubmitting}
         variant="contained"
         fullWidth

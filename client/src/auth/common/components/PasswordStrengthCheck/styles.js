@@ -4,13 +4,12 @@ export const useStyles = makeStyles((theme) => {
   const { colors } = theme;
 
   return createStyles({
-    drawer: {
-      '& .MuiPaper-root': {
-        minWidth: 300,
-        backgroundColor: colors.primary
-      }
+    checkIcon: {
+      color: colors.success
+    },
+    crossIcon: {
+      color: colors.error
     }
   });
 }
-
 );
