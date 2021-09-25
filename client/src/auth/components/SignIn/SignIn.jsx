@@ -1,8 +1,9 @@
 import { Box, Typography, Link, Divider } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import { Card, TextField, Button } from '../../../common/components';
+import { Card } from '../../../common/components';
 import { colors } from '../../../global-styles';
 import { paths } from '../../router';
+import { SignInForm } from '../SignInForm';
 
 const SignIn = () => {
   return (
@@ -12,14 +13,7 @@ const SignIn = () => {
           <Typography variant="h4" textAlign="center" color="primary">Login</Typography>
         </Box>
         <Box mb={1}>
-          <TextField label={'Email'} placeholder="Enter your email..." type="email" />
-          <TextField label={'Password'} placeholder="Enter your password..." type="password" />
-          <Box mb={2} display="flex" justifyContent="flex-end">
-            <Link component={RouterLink} to={paths.forgotPassword} color={colors.primaryLink} underline="none">
-              <Typography variant="h6" textAlign="center" color="primary">Forgot Password</Typography>
-            </Link>
-          </Box>
-          <Button variant="contained" fullWidth>Login</Button>
+          <SignInForm />
         </Box>
         <Divider />
         <Box my={1}>

@@ -11,7 +11,14 @@ export const useStyles = makeStyles((theme) =>
       marginLeft: -12
     },
     input: {
-      color: theme.colors.primary
+      color: theme.colors.primary,
+      '&.Mui-error': {
+        borderColor: theme.colors.error
+      }
+    },
+    error: {
+      fontSize: 16,
+      marginLeft: 0
     }
   })
 );
