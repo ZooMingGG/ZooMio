@@ -21,14 +21,13 @@ const PasswordStrengthVisualizer = ({ value, setIsPasswordValid }) => {
   useEffect(() => {
     const isPasswordValid = Object.values(passwordStrength).every(check => check);
     setIsPasswordValid(isPasswordValid);
-  }, [value, passwordStrength]);
+  }, [value, passwordStrength, setIsPasswordValid]);
 
   return (
     <Box>
       <PasswordStrengthCheck
         value={value}
         regexp={shouldIncludeDigits}
-        passwordStrength={passwordStrength}
         setPasswordStrength={setPasswordStrength}
         ruleTitle="shouldIncludeDigits"
         title="Should contain at least one digit."
@@ -36,7 +35,6 @@ const PasswordStrengthVisualizer = ({ value, setIsPasswordValid }) => {
       <PasswordStrengthCheck
         value={value}
         regexp={shouldIncludeLowerCaseCharacter}
-        passwordStrength={passwordStrength}
         setPasswordStrength={setPasswordStrength}
         ruleTitle="shouldIncludeLowerCaseCharacter"
         title="Should contain at least one lower case letter."
@@ -44,7 +42,6 @@ const PasswordStrengthVisualizer = ({ value, setIsPasswordValid }) => {
       <PasswordStrengthCheck
         value={value}
         regexp={shouldIncludeUpperCaseCharacter}
-        passwordStrength={passwordStrength}
         setPasswordStrength={setPasswordStrength}
         ruleTitle="shouldIncludeUpperCaseCharacter"
         title="Should contain at least one upper case letter."
@@ -52,7 +49,6 @@ const PasswordStrengthVisualizer = ({ value, setIsPasswordValid }) => {
       <PasswordStrengthCheck
         value={value}
         regexp={shouldIncludeSpecialCharacter}
-        passwordStrength={passwordStrength}
         setPasswordStrength={setPasswordStrength}
         ruleTitle="shouldIncludeSpecialCharacter"
         title="Should contain at least one special character."
@@ -60,7 +56,6 @@ const PasswordStrengthVisualizer = ({ value, setIsPasswordValid }) => {
       <PasswordStrengthCheck
         value={value}
         regexp={shouldBeAtLeastEightCharactersLong}
-        passwordStrength={passwordStrength}
         setPasswordStrength={setPasswordStrength}
         ruleTitle="shouldBeAtLeastEightCharactersLong"
         title="Should be at least 8 characters long."

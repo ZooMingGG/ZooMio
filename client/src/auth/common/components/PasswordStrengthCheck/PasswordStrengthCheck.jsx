@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Box, Typography } from '@mui/material';
 import { CheckCircleOutlineRounded, CancelRounded } from '@mui/icons-material';
 import { useStyles } from './styles';
 import { colors } from '../../../../global-styles';
 
-const PasswordStrengthCheck = ({ value, regexp, title, ruleTitle, passwordStrength, setPasswordStrength }) => {
+const PasswordStrengthCheck = ({ value, regexp, title, ruleTitle, setPasswordStrength }) => {
   const styles = useStyles();
-  const isMatch = value.match(regexp);
+  const isMatch = useMemo(() => value.match(regexp), [value, regexp]);
 
   useEffect(() => {
     setPasswordStrength((prevState) => {
@@ -15,7 +15,7 @@ const PasswordStrengthCheck = ({ value, regexp, title, ruleTitle, passwordStreng
         [ruleTitle]: Array.isArray(isMatch)
       }
     });
-  }, [value]);
+  }, [value, ruleTitle, setPasswordStrength, isMatch]);
 
   return (
     <Box display="flex" alignItems="center" mb={0.5}>
