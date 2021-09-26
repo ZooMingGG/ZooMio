@@ -3,14 +3,16 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Box } from '@mui/material';
 import { TextField, Button } from '../../../common/components';
-import { PasswordStrengthVisualizer } from '../../common/components/PasswordStrengthVisualizer';
+import { PasswordStrengthVisualizer } from '../../common/components';
 
 const validationSchema = yup.object({
   firstName: yup
     .string('Enter your first name')
+    .min(3, 'First name should be at least 3 characters long')
     .required('First name is required'),
   lastName: yup
     .string('Enter your last name')
+    .min(3, 'Last name should be at least 3 characters long')
     .required('Last name is required'),
   email: yup
     .string('Enter your email')
