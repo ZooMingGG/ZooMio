@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Box } from '@mui/material';
 import { TextField, Button } from '../../../common/components';
 import { PasswordStrengthVisualizer } from '../../common/components';
+import { signUp } from '../../../store/actions';
 
 const validationSchema = yup.object({
   firstName: yup
@@ -29,9 +31,7 @@ const validationSchema = yup.object({
 
 const SignUpForm = () => {
   const [isPasswordValid, setIsPasswordValid] = useState(false);
-  const submitHandler = (values) => {
-    console.log(JSON.stringify(values, null, 2));
-  };
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -42,7 +42,9 @@ const SignUpForm = () => {
       confirmPassword: '',
     },
     validationSchema: validationSchema,
-    onSubmit: submitHandler
+    onSubmit: (values) => {
+      dispatch(signUp(values));
+    }
   });
 
   return (
