@@ -4,7 +4,7 @@ import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
-  public constructor(private readonly usersService: UsersService) { }
+  public constructor(private readonly usersService: UsersService) {}
 
   @Get('/get-current-user')
   public getCurrentUser(): any {
